@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: campus_mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=smart_campus
+    volumes:
+      - mongo_data:/data/db
+
+  campus-app:
+    build: .
+    container_name: campus_assistant_app
+    ports:
+      - "8081:8080"
+    depends_on:
+      - mongodb
+    environment:
+      # We use 'mongodb' (the service name) instead of 'localhost'
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/smart_campus
+
+volumes:
+  mongo_data:
