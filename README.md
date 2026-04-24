@@ -178,8 +178,3 @@ Automates:
 
 ---
 
-## 💬 Interview Pitch
-
-> “CampusIQ is an AI-powered campus assistant that uses a RAG-inspired approach to combine real-time campus data with intelligent responses. It is fully containerized and deployed using a CI/CD pipeline with Jenkins, making it scalable and production-ready.”
-
----
