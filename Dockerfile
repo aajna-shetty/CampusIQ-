@@ -1,15 +1,15 @@
-# Use a lightweight JDK 21 image (matches your Maven build)
+# Step 1: Build JAR using Maven
+FROM maven:3.9.9-eclipse-temurin-21 AS builder
+
+WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
+
+# Step 2: Run JAR
 FROM eclipse-temurin:21-jdk-jammy
 
-# Set the working directory inside the container
 WORKDIR /app
+COPY --from=builder /app/target/*.jar app.jar
 
-# Copy the JAR file from your target folder into the container
-# Note: Using the wildcard * handles the versioning (0.0.1-SNAPSHOT)
-COPY target/*.jar app.jar
-
-# Expose the port your Spring Boot app runs on
 EXPOSE 8080
-
-# Command to run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
