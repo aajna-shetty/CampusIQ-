@@ -46,7 +46,7 @@ public class Timetable {
         this.schedules = schedules;
     }
 
-    private String dayOfWeek; // e.g., "MONDAY"
+    private String dayOfWeek;
     private List<CourseSchedule> schedules;
 }
 

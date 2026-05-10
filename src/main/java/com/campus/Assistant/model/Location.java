@@ -10,6 +10,9 @@ public class Location {
     @Id
     private String id;
     private String name;
+    private String block;
+    private String floor;
+    private String roomNumber;
 
     public Location() {
     }
@@ -62,7 +65,5 @@ public class Location {
         this.roomNumber = roomNumber;
     }
 
-    private String block;
-    private String floor;
-    private String roomNumber;
+
 }

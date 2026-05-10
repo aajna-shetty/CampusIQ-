@@ -14,26 +14,25 @@ public class CampusController {
     public CampusController(CampusService campusService) {
         this.campusService = campusService;
     }
-
-    // --- Added: Get critical alerts for exams and urgent events ---
+    @GetMapping("/hi")
+    public String hi() {
+        return "Hello from CampusIQ via Jenkins CI/CD!";
+    }
     @GetMapping("/alerts")
     public String getAlerts() {
         return campusService.getCriticalAlerts();
     }
-
-    // Tool: Get the next upcoming event (includes priority status)
     @GetMapping("/next-event")
     public Event getNextEvent() {
         return campusService.getNextUpcomingEvent();
     }
 
-    // Tool: Get timetable based on the day
+
     @GetMapping("/timetable/{day}")
     public Timetable getTimetable(@PathVariable String day) {
         return campusService.getDailyTimetable(day);
     }
 
-    // Tool: Find location coordinates/details
     @GetMapping("/locate")
     public String locate(@RequestParam String query) {
         return campusService.resolveLocation(query);

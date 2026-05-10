@@ -27,14 +27,14 @@ public class CampusAIService {
         String alerts = campusService.getCriticalAlerts();
         String url = "https://openrouter.ai/api/v1/chat/completions";
 
-        // 1. Prepare Headers
+
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + apiKey);
         headers.set("HTTP-Referer", "http://localhost:8080"); // Required by OpenRouter
         headers.set("X-Title", "Aajna Campus Assistant");
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        // 2. Prepare Payload (The OpenAI Format)
+
         Map<String, Object> body = new HashMap<>();
         body.put("model", modelId);
 
@@ -44,12 +44,8 @@ public class CampusAIService {
         body.put("messages", messages);
 
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(body, headers);
-
-        // 3. Execute the call
         try {
             ResponseEntity<Map> response = restTemplate.postForEntity(url, entity, Map.class);
-
-            // Navigate the JSON: choices[0].message.content
             List choices = (List) response.getBody().get("choices");
             Map firstChoice = (Map) choices.get(0);
             Map message = (Map) firstChoice.get("message");

@@ -18,7 +18,7 @@ services:
     depends_on:
       - mongodb
     environment:
-      # We use 'mongodb' (the service name) instead of 'localhost'
+
       - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/smart_campus
 
 volumes:

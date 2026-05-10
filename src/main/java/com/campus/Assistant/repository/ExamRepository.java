@@ -6,6 +6,5 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface ExamRepository extends MongoRepository<Exam, String> {
-    // Find exams happening in the next 48 hours
     List<Exam> findByExamDateBetween(LocalDateTime start, LocalDateTime end);
 }

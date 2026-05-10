@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface EventRepository extends MongoRepository<Event,String> {
-    List<Event> findByDateTimeAfterOrderByDateTimeAsc(LocalDateTime now);
+
 
     List<Event> findByDateTimeBefore(LocalDateTime now);
 }
