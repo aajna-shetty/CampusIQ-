@@ -18,6 +18,10 @@ public class CampusController {
     public String hi() {
         return "Hello from CampusIQ via Jenkins CI/CD!";
     }
+    @GetMapping("/hello")
+    public String hello(){
+        return "Hello Version 2";
+    }
     @GetMapping("/alerts")
     public String getAlerts() {
         return campusService.getCriticalAlerts();
